@@ -1,4 +1,4 @@
-package com.igorion.mqtt.type;
+package com.igorion.mqtt.types.message;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.igorion.type.json.impl.AJsonTypeImpl;
 
 /**
- * json mapping for the bmerawdata format as in Bosch AI-Studio documentation<br>
+ * json mapping for a simple description of an algorithm's categories<br>
  *
  * @author h.fleischer
  * @since 12.08.2023

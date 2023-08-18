@@ -1,4 +1,4 @@
-package com.igorion.mqtt.type;
+package com.igorion.mqtt.types.bmerawdata;
 
 import java.util.ArrayList;
 import java.util.List;

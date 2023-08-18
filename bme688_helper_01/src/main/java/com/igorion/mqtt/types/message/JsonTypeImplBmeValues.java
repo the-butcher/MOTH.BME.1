@@ -1,4 +1,4 @@
-package com.igorion.mqtt.type;
+package com.igorion.mqtt.types.message;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.igorion.type.json.impl.AJsonTypeImpl;
 
 /**
- * json mapping for the ConfigBody section of bmerawdata<br>
+ * json mapping for a MQTT values message<br>
  *
  * @author h.fleischer
  * @since 12.08.2023

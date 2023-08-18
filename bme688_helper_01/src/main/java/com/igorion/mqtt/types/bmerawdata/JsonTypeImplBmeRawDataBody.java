@@ -1,4 +1,7 @@
-package com.igorion.mqtt.type;
+package com.igorion.mqtt.types.bmerawdata;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.igorion.type.json.impl.AJsonTypeImpl;
 
 /**
- * json mapping for the heater profile mqtt message<br>
+ * json mapping for the rawDataBody section of bmerawdata<br>
  *
  * @author h.fleischer
  * @since 12.08.2023
@@ -15,12 +18,12 @@ import com.igorion.type.json.impl.AJsonTypeImpl;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class JsonTypeImplBmeHeaterStep extends AJsonTypeImpl {
+public class JsonTypeImplBmeRawDataBody extends AJsonTypeImpl {
 
-    @JsonProperty("deg")
-    public int deg;
+    @JsonProperty("dataColumns")
+    public List<JsonTypeImplBmeDataColumn> dataColumns = new ArrayList<>();
 
-    @JsonProperty("num")
-    public int num;
+    @JsonProperty("dataBlock")
+    public List<Number[]> dataBlock = new ArrayList<>();
 
 }

@@ -1,4 +1,4 @@
-package com.igorion.mqtt.type;
+package com.igorion.mqtt.types.bmerawdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,15 +15,15 @@ import com.igorion.type.json.impl.AJsonTypeImpl;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class JsonTypeImplBmeDutyCycleProfile extends AJsonTypeImpl {
+public class JsonTypeImplBmeSensorConfiguration extends AJsonTypeImpl {
 
-    @JsonProperty("id")
-    public String id = "duty_1";
+    @JsonProperty("sensorIndex")
+    public int sensorIndex;
 
-    @JsonProperty("numberScanningCycles")
-    public int numberScanningCycles = 1;
+    @JsonProperty("heaterProfile")
+    public String heaterProfile;
 
-    @JsonProperty("numberSleepingCycles")
-    public int numberSleepingCycles = 0;
+    @JsonProperty("dutyCycleProfile")
+    public String dutyCycleProfile;
 
 }

@@ -12,7 +12,7 @@ import org.eclipse.paho.client.mqttv3.MqttSecurityException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.igorion.mqtt.type.JsonTypeImplBsecProfile;
+import com.igorion.mqtt.types.message.JsonTypeImplBsecProfile;
 
 public class MqttPublisherPahoBme {
 
