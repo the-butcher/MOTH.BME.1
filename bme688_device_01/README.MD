@@ -9,3 +9,4 @@ The device is built these Parts:
 
 - [3D-printed parts](bme688_device_01.stl)
 
+Credits for the "Knurled Screw-Top Container" go to [Marty Keil]https://www.thingiverse.com/m_d_k/designs
