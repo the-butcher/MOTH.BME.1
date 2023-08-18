@@ -7,10 +7,10 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
-const String CONFIG_MQTT_HOST = "<your-mqtt-ip>";
-const int CONFIG_MQTT_PORT = 1883; 
-const String CONFIG_WIFI_SSID = "<your-wifi-ssid>";
-const String CONFIG_WIFI_PASS = "<your-wifi-password>";
+const String CONFIG_MQTT_HOST = "192.168.0.115";
+const int CONFIG_MQTT_PORT = 1883;
+const String CONFIG_WIFI_SSID = "the-butchers";
+const String CONFIG_WIFI_PASS = "and1Trinker";
 const String CONFIG_TIME_ZONE = "CET-1CEST,M3.5.0,M10.5.0/3";
 
 class BoxConf {
