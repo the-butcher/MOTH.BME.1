@@ -130,14 +130,40 @@ void setup() {
       attachInterrupt(digitalPinToInterrupt(BUTTON_PIN_C), handleButtonCChange, CHANGE);
       while (!recentPress(buttonCMillis, 1000)) {
         if (recentPress(buttonBMillis, 500)) {
-          if (BoxSensCollect::getHeaterProfile().id == HEATER_301.id) {
+          if (BoxSensCollect::getHeaterProfile().id == HEATER_001.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_301);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_301.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_321);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_321.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_322);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_322.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_323);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_323.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_324);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_324.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_331);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_331.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_332);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_332.id) {
             BoxSensCollect::setHeaterProfile(HEATER_354);
           } else if (BoxSensCollect::getHeaterProfile().id == HEATER_354.id) {
             BoxSensCollect::setHeaterProfile(HEATER_411);
           } else if (BoxSensCollect::getHeaterProfile().id == HEATER_411.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_412);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_412.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_413);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_413.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_414);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_414.id) {
             BoxSensCollect::setHeaterProfile(HEATER_501);
           } else if (BoxSensCollect::getHeaterProfile().id == HEATER_501.id) {
-            BoxSensCollect::setHeaterProfile(HEATER_301);
+            BoxSensCollect::setHeaterProfile(HEATER_502);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_502.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_503);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_503.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_504);
+          } else if (BoxSensCollect::getHeaterProfile().id == HEATER_504.id) {
+            BoxSensCollect::setHeaterProfile(HEATER_001);
           }
         }
         BoxDisplay::renderMenuCollect();

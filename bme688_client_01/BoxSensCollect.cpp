@@ -6,7 +6,7 @@
 Bme68x BoxSensCollect::baseSensor;
 init_state_t BoxSensCollect::initState = INIT_STATE_PENDING;
 
-int BoxSensCollect::cycleIndex = 0;
+int BoxSensCollect::cycleIndex = -1;
 int BoxSensCollect::stepIndex = -1;
 int BoxSensCollect::specimenIndex = -1;
 
@@ -87,29 +87,32 @@ bool BoxSensCollect::tryRead() {
   
   uint8_t nFieldsLeft = 0;
   bme68xData* data;
-  if (BoxSensCollect::baseSensor.getOpMode() == BME68X_SLEEP_MODE) {
 
-    if (millis() >= BoxSensCollect::wakeupMillis) {
-      BoxSensCollect::baseSensor.setOpMode(BME68X_PARALLEL_MODE);
-      BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
-    }
+  // if (BoxSensCollect::baseSensor.getOpMode() == BME68X_SLEEP_MODE) {
 
-  } else if (BoxSensCollect::baseSensor.fetchData()) {
+  //   if (millis() >= BoxSensCollect::wakeupMillis) {
+  //     BoxSensCollect::baseSensor.setOpMode(BME68X_PARALLEL_MODE);
+  //     BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
+  //   }
+
+  // } else
+  
+  if (BoxSensCollect::baseSensor.fetchData()) {
     
     data = BoxSensCollect::baseSensor.getAllData();
     if (data->gas_index != BoxSensCollect::stepIndex) {
 
       BoxSensCollect::stepIndex = data->gas_index;
-      // if (BoxSensCollect::stepIndex == 0) {
-      //   BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
-      // }
+      if (BoxSensCollect::stepIndex == 0) {
+        BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
+      }
 
       // upon last step put to sleep
-      if (BoxSensCollect::stepIndex == 9) {
-        BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
-        BoxSensCollect::baseSensor.setOpMode(BME68X_SLEEP_MODE);
-        BoxSensCollect::wakeupMillis = millis() + HEATER_TIME_BASE * 0;
-      }
+      // if (BoxSensCollect::stepIndex == 9) {
+      //   BoxSensCollect::cycleIndex = BoxSensCollect::cycleIndex + 1;
+      //   BoxSensCollect::baseSensor.setOpMode(BME68X_SLEEP_MODE);
+      //   BoxSensCollect::wakeupMillis = millis() + HEATER_TIME_BASE * 0;
+      // }
 
       BoxSensCollect::values = {
         millis(),
