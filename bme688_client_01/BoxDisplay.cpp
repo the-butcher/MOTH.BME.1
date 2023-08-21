@@ -73,8 +73,10 @@ void BoxDisplay::renderRoot() {
 
   BoxDisplay::baseDisplay.clearDisplay();
 
-  BoxDisplay::baseDisplay.setCursor(0, 16);
-  BoxDisplay::baseDisplay.print("B: collect data");
+  if (BoxConn::initState == INIT_STATE_SUCCESS && BoxMqtt::initState == INIT_STATE_SUCCESS && BoxTime::initState == INIT_STATE_SUCCESS) {
+    BoxDisplay::baseDisplay.setCursor(0, 16);
+    BoxDisplay::baseDisplay.print("B: collect data");
+  }
 
   BoxDisplay::baseDisplay.setCursor(0, 24);
   BoxDisplay::baseDisplay.print("C: identify gas");

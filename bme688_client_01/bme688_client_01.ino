@@ -62,6 +62,9 @@ void setup() {
     }
     delay(100);
   }
+  if (BoxConn::initState == INIT_STATE_PENDING) {
+    BoxConn::initState = INIT_STATE_FAILURE;
+  }
   delay(500);
 
   // MQTT connection
@@ -73,6 +76,9 @@ void setup() {
       break;
     }
     delay(100);
+  }
+  if (BoxMqtt::initState == INIT_STATE_PENDING) {
+    BoxMqtt::initState = INIT_STATE_FAILURE;
   }
   delay(500);
 
@@ -86,16 +92,22 @@ void setup() {
     }
     delay(100);
   }
+  if (BoxTime::initState == INIT_STATE_PENDING) {
+    BoxTime::initState = INIT_STATE_FAILURE;
+  }
+
+  bool isInitStateComplete = BoxConn::initState == INIT_STATE_SUCCESS && BoxMqtt::initState == INIT_STATE_SUCCESS && BoxTime::initState == INIT_STATE_SUCCESS;
 
   // in case of failure stop here
-  if (BoxConn::initState != INIT_STATE_SUCCESS || BoxMqtt::initState != INIT_STATE_SUCCESS || BoxTime::initState != INIT_STATE_SUCCESS) {
+  // if (BoxConn::initState != INIT_STATE_SUCCESS || BoxMqtt::initState != INIT_STATE_SUCCESS || BoxTime::initState != INIT_STATE_SUCCESS) {
 
-    while (true) {
-      BoxDisplay::renderInit();
-      delay(1000);
-    }
+  //   // just keep rendering the list
+  //   while (true) {
+  //     BoxDisplay::renderInit();
+  //     delay(1000);
+  //   }
 
-  } else {
+  // } else {
 
     // wait a bit before showing the modus options
     delay(1000);
@@ -104,7 +116,7 @@ void setup() {
     attachInterrupt(digitalPinToInterrupt(BUTTON_PIN_C), handleButtonCChange, CHANGE);
     while (true) {
       BoxDisplay::renderRoot(); // time must count
-      if (recentPress(buttonBMillis, 500)) {
+      if (isInitStateComplete && recentPress(buttonBMillis, 500)) {
         initModus = INIT_MODUS_COLLECT;
         break;
       } else if (recentPress(buttonCMillis, 500)) {
@@ -210,7 +222,7 @@ void setup() {
 
     }
 
-  }
+  // }
 
 }
 
